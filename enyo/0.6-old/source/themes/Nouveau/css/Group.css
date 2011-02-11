@@ -1,0 +1,16 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-group {
+	border-width: 14px 14px 14px 14px;
+	-webkit-border-image: url(../images/group-unlabeled-box.png) 14 14;
+	-moz-border-image: url(../images/group-unlabeled-box.png) 14 14;
+	border-image: url(../images/group-unlabeled-box.png) 14 14;
+	margin: 8px 0px;
+}
+
+.enyo-group-inner {
+	margin: -12px -12px;
+}
+
+.enyo-row {
+	border-bottom: 1px solid gray;
+}

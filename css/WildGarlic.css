@@ -1,0 +1,53 @@
+.item-word {
+	font-weight:bold;
+}
+
+.item-definition {
+	color:#666;
+	font-size:80%;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+
+.item-thumbs-up {
+	color:#009900;
+	font-size:80%;
+	
+}
+
+.item-thumbs-down {
+	color:#990000;
+	font-size:80%;
+}
+
+.definition-header {
+	background-color: #c7c7c7;
+	color:#444;
+/*	min-height: 50px;*/
+	font-size:150%;
+	border-bottom: .1em solid #999;
+}
+
+h3 {
+	margin:.2em 0;
+	font-size:100%;
+	font-weight:normal;
+}
+
+.definition-definition, .definition-example, .definition-permalink {
+	font-size:80%;
+	color:#666;
+}
+
+.definition-permalink {
+	background-color:#2D6C94;
+}
+
+.definition-permalink a {
+	color:#FFF;
+	text-decoration:none;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}

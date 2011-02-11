@@ -1,0 +1,24 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+enyo.depends(
+	"css/Image.css",
+	"css/Button.css",
+	"css/RichText.css",
+	"css/Iframe.css",
+	"css/Scrim.css",
+	"Image.js",
+	"Stateful.js",
+	"CustomButton.js",
+	"Button.js",
+	"AjaxContent.js",
+	"HtmlContent.js",
+	"BasicInput.js",
+	"Input.js",
+	"RichText.js",
+	"AnimatedImage.js",
+	"Iframe.js",
+	"Popup.js",
+	"LabeledContainer.js",
+	"Scrim.js",
+	"Progress.js",
+	"LazyControl.js"
+);

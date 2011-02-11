@@ -1,0 +1,59 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-menu-button-shape {
+	font-family: Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+	border-width: 0 25px;
+	display: inline-block;
+	color: white;
+	/*text-transform: capitalize;*/
+	padding: 0;
+}
+
+.enyo-menu-button-header-client {
+	text-align: left;
+	margin: 0px -12px;
+	height: 100%;
+	display: block;
+}
+
+/* webkit */
+
+.enyo-menu-button-shape.enyo-button {
+	-webkit-border-image: url(../images/palm-menu-button.png) 0 25 200 25;
+}
+
+.enyo-menu-button-shape.enyo-button-down {
+	-webkit-border-image: url(../images/palm-menu-button.png) 50 25 150 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed {
+	-webkit-border-image: url(../images/palm-menu-button.png) 100 25 100 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(../images/palm-menu-button.png) 150 25 50 25;
+}
+
+/* moz */
+
+.enyo-menu-button-shape.enyo-button-button {
+	-moz-box-sizing: border-box;
+}
+
+.enyo-menu-button-shape.enyo-button {
+	-moz-border-image: url(../images/palm-menu-button.png) 0 25 200 25;
+}
+
+.enyo-menu-button-shape.enyo-button-down {
+	-moz-border-image: url(../images/palm-menu-button.png) 50 25 150 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed {
+	-moz-border-image: url(../images/palm-menu-button.png) 100 25 100 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed.enyo-button-down {
+	-moz-border-image: url(../images/palm-menu-button.png) 150 25 50 25;
+}

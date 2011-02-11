@@ -1,0 +1,11 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-nouveau.enyo-item {
+	border-top-color: #ededed;
+	border-bottom-color: #afafaf;
+}
+
+.enyo-nouveau.enyo-item.enyo-held {
+	border-top-color: #b0cdeb;
+	background: url(../images/down-bg.png) left top no-repeat;
+	-webkit-background-size: 100% 100%;
+}

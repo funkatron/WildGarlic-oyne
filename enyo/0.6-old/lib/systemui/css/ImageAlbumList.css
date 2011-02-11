@@ -1,0 +1,14 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-image-album-list-album-name {
+	padding-top: 30px;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.enyo-image-album-list-empty {
+	background: url(../images/empty-photo-library.png) center center no-repeat;
+	padding-top: 200px;
+	text-align: center;
+	color: grey;
+	font-size: 18px;
+}

@@ -1,0 +1,174 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+body {
+	background: #e4e4e2 !important;
+}
+
+.error-text {
+	color: #d70000;
+}
+
+.palm-button {
+	text-transform: none;
+}
+
+/* Account Icons */
+
+.account-wrapper, 
+.first-launch-account-list .palm-button-wrapper,
+#findmore .palm-button-wrapper {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;	
+	height: 50px;
+}
+.account-wrapper .account-template-icon {
+	width: 32px;
+	height: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background: url(../images/icon-accounts.png) center center no-repeat; 
+}
+
+/* List */
+
+.no-account {
+	padding: 15px 0 15px 15px;
+}
+
+.account-label-wrapper .account-label-title {
+	font-size: 18px;
+	padding-right: 14px;
+}
+.account-label-wrapper .account-label-subtitle {
+  	font-size: 14px;
+	color: #888;
+	padding-right: 14px;
+}
+.account-label-wrapper, .first-launch-account-header-title {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	-webkit-box-flex: 1;
+}
+
+/* First Use - List & Buttons */
+
+.first-launch-account-header {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	min-height: 74px;
+}
+.first-launch-account-header-icon {  
+  	width: 74px;
+  	background: url(../images/icon-accounts.png) center center no-repeat;
+}
+.first-launch-account-header-title .title {
+	color: #444;
+	text-shadow: #fff 0px 1px 0px;	
+}
+.palm-button-wrapper {
+	min-height: 50px;
+}
+.palm-button-wrapper .account-template-icon {
+	width: 42px;
+	background: url(../images/icon-accounts.png) center center no-repeat; 
+}
+.palm-button-wrapper .account-label-title {
+	margin-left: 6px;
+}
+
+.account-scroller {
+  	position: fixed !important; 
+  	top: 0; 
+  	bottom: 65px; 
+  	width: 100%;
+}
+
+.account-scroller.first-launch {
+	top: 74px; 
+  	background-color: #b5b5b5;
+}
+
+.account-scroller-shadow {
+	 border-width: 30px 1px 30px 1px;
+	 -webkit-border-image: url(../images/drawer-shadow.png) 30 1 30 1 repeat repeat;
+	 -webkit-box-sizing: border-box;
+	 position: fixed; 
+	 width: 100%; 
+	 top: 74px; 
+	 bottom: 65px;
+	 pointer-events: none;
+}
+
+.modify-account-scroller-shadow { 
+	height: 50px;
+	background: url(../images/drawer-shadow-bottom.png) bottom left repeat-x;
+  	width: 100%; 
+	position: fixed;
+  	bottom: 65px;
+  	pointer-events: none;
+}
+
+.account-scroller.with-2-buttons,
+.account-scroller-shadow.with-2-buttons,
+.modify-account-scroller-shadow.with-2-buttons {
+  	bottom: 120px; 
+}
+
+#templates-container.no-button .account-scroller, 
+#templates-container.no-button .account-scroller-shadow {
+  	bottom: -10px; 
+}
+
+.account-scroller .account-label-subtitle {
+	color: #666;
+}
+
+/* Remove non-link list borders */
+.account-scroller.first-launch .palm-row {
+	background-image: none;
+}
+
+/* Removing visible "selected state" - ideally this list should not be tappable */
+.account-scroller .palm-row.selected { 
+	-webkit-border-image: none !important;
+	border-width: 0;
+}
+.account-scroller .palm-row.selected > .palm-row-wrapper {
+	margin: 0;
+}
+
+.synergy-accounts-footer {
+  position:fixed; 
+  bottom:0px; 
+  left:0px; 
+  right:0px;
+  -webkit-palm-mouse-target: ignore;
+}
+
+.synergy-accounts-footer-wrapper {
+  margin-top: -10px;
+}
+
+/* selected row */
+.selected .account-name,
+.selected .account-username,
+.selected .account-label-title,
+.selected .account-label-subtitle {
+	color: #fff;
+}
+
+.account-template-icon.appcatalog {
+	background-image: url(../images/appcatalog-32x32.png);
+}
+
+/* Scroll Fades */
+
+.scroll-fade-bottom {
+	position: fixed;
+	z-index: 10;
+	bottom: 0;
+	width: 100%;
+  	height: 54px;
+	background: transparent url(../images/scene-fade-bottom.png) left bottom repeat-x;
+  	pointer-events: none;
+}

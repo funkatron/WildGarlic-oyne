@@ -1,0 +1,32 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-nouveau.enyo-menu-button-shape {
+	color: #606060;
+	-webkit-border-image: url(../images/command-button-bg.png) 0 25 50 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-down {
+	-webkit-border-image: url(../images/command-button-bg.png) 50 25 0 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-depressed {
+	-webkit-border-image: url(../images/command-button-bg.png) 50 25 0 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-default {
+	-webkit-border-image: url(../images/command-button-bg.png) 0 25 50 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-default.enyo-button-down {
+	-webkit-border-image: url(../images/command-button-bg.png) 50 25 0 25;
+}
+
+.enyo-command-menu-draghandle {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-image: url(../images/drag-handle-nouveau.png);
+	z-index: 1;
+	left: 0px;
+	-webkit-user-drag: none;
+	cursor: pointer;
+}

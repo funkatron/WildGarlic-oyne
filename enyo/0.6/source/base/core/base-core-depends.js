@@ -1,0 +1,22 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+enyo.depends(
+	"base-core.css",
+	"startup.js",
+	"i18n.js",
+	"xhr.js",
+	"date.js",
+	"kit.js",
+	"util.js",
+	"json.js",
+	"Oop.js",
+	"Object.js",
+	"Component.js",
+	"Animation.js",
+	"Dispatcher.js",
+	"Gesture.js",
+	"Drag.js",
+	"DomNode.js",
+	"DomNodeBuilder.js",
+	"ManagedDomBuilder.js",
+	"Control.js"
+);
