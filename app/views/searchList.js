@@ -79,9 +79,6 @@ enyo.kind(
 		console.log('url', url);
 		this.$.udSearch.setUrl(url);
 		var r = this.$.udSearch.call(null, {pageIndex: inPage});
-
-		this.owner.showSpinner(true);
-		
 		return true;
 	},
 	
@@ -102,14 +99,14 @@ enyo.kind(
 		this.pages[pageIndex] = {
 			data: inResponse.list
 		};
+		// after getting the first batch of data, tell the list to render; alternative is to scroll the empty list
+		// if (pageIndex == 0) {
+			this.$.list.refresh();
+		// }
 		
-		this.owner.showSpinner(false);
-		
-		this.$.list.refresh();
 	},
 	
 	gotSearchFailure: function(inSender, inResponse, inRequest) {
-	    this.owner.showSpinner(false);
 		alert('Error getting results');
 	},
 	
@@ -151,7 +148,9 @@ enyo.kind(
 		
 		var row = this.fetchRow(inIndex);
 		
-	    this.owner.showDefinition(row);
+		this.owner.$['panel-definition'].showDefinition(row);
+		
+		this.owner.$.slidingGroup.setSelected(this.owner.$['panel-definition']);
 	}
     
 });

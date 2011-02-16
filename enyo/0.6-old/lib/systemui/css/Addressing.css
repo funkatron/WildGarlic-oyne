@@ -1,0 +1,8 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-addressing-list {
+	position: absolute;
+	z-index: 100;
+	background-color: #E4E4E2;
+	border-top: 1px solid white;
+	border-bottom: 1px solid silver;
+}

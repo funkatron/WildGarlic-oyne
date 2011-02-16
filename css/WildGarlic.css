@@ -1,8 +1,3 @@
-.search-spinner {
-	margin:7px 0px 6px 0px;
-	display:inline-block;
-}
-
 .item-word {
 	font-weight:bold;
 }
@@ -47,4 +42,12 @@ h3 {
 
 .definition-permalink {
 	background-color:#2D6C94;
+}
+
+.definition-permalink a {
+	color:#FFF;
+	text-decoration:none;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
 }

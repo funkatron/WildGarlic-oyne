@@ -1,0 +1,47 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-audiolist-artwork-frame {
+	width: 82px;
+	height: 65px;
+	background: url(../images/album-art-shadow.png) top left repeat-y;
+	float: right;
+	margin-right: 10px;
+	margin-top: 0px;
+}	
+
+.enyo-audiolist-artwork {
+	width: 77px;
+	height: 65px;
+	padding-left: 4px;
+}
+
+.enyo-audiolist-music-preview-play {
+	width: 64px;
+  	height: 64px;
+	background: url(../images/music-preview-stop.png) center center no-repeat;  
+	background: url(../images/music-preview-play.png) center center no-repeat;
+	position:absolute;
+	right: 20px;
+	-webkit-palm-mouse-target: ignore;
+}
+
+.enyo-audiolist-music-preview-stop {
+  	background: url(../images/music-preview-stop.png) center center no-repeat;
+}
+
+.enyo-audiolist-audio-title {
+	margin-top: -5px;
+}
+
+.enyo-audiolist-audio-artist {
+	font-size: 16px;
+    color: #4d4d4f;
+    text-indent: -4px;
+}
+
+.enyo-audio-list-empty {
+	background: url(../images/empty-folder-audio.png) center center no-repeat;
+	padding-top: 200px;
+	text-align: center;
+	color: grey;
+	font-size: 18px;
+}

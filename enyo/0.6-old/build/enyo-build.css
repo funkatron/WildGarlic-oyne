@@ -1,0 +1,1526 @@
+/* Enyo JavaScript framework -- Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+/*
+	-webkit-user-select: none can cause a major 
+	performance problem in webkit unless mousedown
+	is prevented.
+*/
+body {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	overflow: hidden;
+}
+
+div, object, img, textarea, iframe {
+	position: relative;
+}
+
+.enyo-bbox {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/*
+.enyo-block {
+	display: block;
+}
+
+.enyo-inline {
+	display: inline-block;
+	vertical-align: middle;
+}
+*/
+
+.enyo-fit {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+/**/
+
+.enyo-inline {
+	display: inline-block;
+}
+
+/**/
+
+.enyo-grid {
+	/*overflow: auto;*/
+	padding: 8px;
+}
+
+.enyo-grid-div {
+	float: left;
+	width: 64px;
+	height: 48px;
+	margin: 4px;
+	border: 1px solid gray;
+	box-shadow: 4px 4px 9px #888;
+	-moz-box-shadow: 4px 4px 9px #888;
+	-webkit-box-shadow: 4px 4px 9px #888;
+}/* webkit */
+
+.enyo-hflexbox, .enyo-vflexbox {
+	display: -webkit-box;
+	-webkit-box-sizing: border-box;
+}
+
+.enyo-hflexbox {
+	-webkit-box-orient: horizontal;
+}
+
+.enyo-vflexbox {
+	-webkit-box-orient: vertical;
+}
+
+/* moz */
+
+.enyo-hflexbox, .enyo-vflexbox {
+	display: -moz-box;
+	-moz-box-sizing: border-box;
+}
+
+.enyo-hflexbox {
+	-moz-box-orient: horizontal;
+}
+
+.enyo-vflexbox {
+	-moz-box-orient: vertical;
+}
+.enyo-scrollfades-top,
+.enyo-scrollfades-bottom,
+.enyo-scrollfades-left,
+.enyo-scrollfades-right {
+	position: absolute; 
+	z-index: 100;
+	pointer-events: none;
+}
+
+.enyo-scrollfades-top {
+	top: 0;
+	height: 54px; 
+	width: 100%;
+	background: url(images/fade-top.png) top center repeat-x;
+}
+
+.enyo-scrollfades-bottom {
+	bottom: 0;
+	height: 54px; 
+	width: 100%;
+	background: url(images/fade-bottom.png) bottom center repeat-x;
+}
+
+.enyo-scrollfades-left {
+	top: 0;
+	left: 0; 
+	height: 100%; 
+	width: 54px;
+	background: url(images/fade-left.png) left center repeat-y;
+}
+
+.enyo-scrollfades-right {
+	top: 0;
+	right: 0;
+	height: 100%; 
+	width: 54px;
+	background: url(images/fade-right.png) right center repeat-y;
+}.enyo-scroller {
+	overflow: hidden;
+}
+
+.enyo-scroller-client {
+}
+
+.enyo-scroller-scrollee {
+	-webkit-box-sizing: border-box;
+	min-height: 100%;
+}
+
+.enyo-scroller-fps {
+	z-index: 2;
+	font-size: 9px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	pointer-events: none;
+} .enyo-button, .enyo-custom-button {
+	cursor: pointer;
+	white-space: nowrap;
+	color: black;
+	text-align: center;
+	vertical-align: middle;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.enyo-button img, .enyo-custom-button img {
+	vertical-align: middle;
+}
+.enyo-richtext {
+	word-wrap: break-word;
+	cursor: text;
+	border: none;
+	outline: none;
+	overflow: hidden;
+	padding: 12px;
+}
+
+/* webkit */
+.enyo-richtext {
+	-webkit-user-select: text;
+	-webkit-user-modify: read-write;
+	-webkit-line-break: after-white-space;
+}
+
+.enyo-richtext.enyo-richtext-plaintext {
+	-webkit-user-modify: read-write-plaintext-only;
+}
+
+.enyo-richtext.enyo-richtext-disabled, .enyo-richtext.enyo-richtext-plaintext.enyo-richtext-disabled {
+	-webkit-user-modify: read-only;
+}
+
+/* moz */
+.enyo-richtext {
+	-moz-user-select: text;
+	/* note: doesn't work, need contenteditable */
+	-moz-user-modify: read-write;
+	-moz-line-break: after-white-space;
+}.enyo-iframe {
+	/*
+	position: relative;
+	*/
+	background-color: white;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.enyo-scrim {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	opacity: 0.3;
+	background: black;
+	z-index: 100;
+}.enyo-drawer {
+	overflow: hidden;
+}.enyo-pane {
+	-webkit-box-sizing: border-box;
+}
+
+.enyo-view {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 100%;
+	-webkit-box-sizing: border-box;
+}
+.enyo-floating-header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}html {
+	width: 100%;
+	position: relative;
+}
+
+body {
+	position: relative;
+	background-color: #e4e4e2;
+}
+
+.enyo-bg {
+	background-color: #e4e4e2;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body, input, button {
+	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	cursor: default;
+}.enyo-group {
+	border-width: 14px 14px 14px 14px;
+	-webkit-border-image: url(images/group.png) 14 14;
+	-moz-border-image: url(images/group.png) 14 14;
+	border-image: url(images/group.png) 14 14;
+	margin: 8px 0px;
+}
+
+.enyo-group-inner {
+	margin: -12px -12px;
+}
+
+.enyo-row {
+	border-bottom: 1px solid gray;
+}
+
+.enyo-group.labeled {
+	border-width: 36px 14px 14px 14px;
+	-webkit-border-image: url(images/group-labeled.png) 36 14 14 14;
+	-moz-border-image: url(images/group-labeled.png) 36 14 14 14;
+	border-image: url(images/group-labeled.png) 36 14 14 14;
+	margin: 8px 0px;
+}
+
+.enyo-group-label {
+	margin: -34px -12px;
+	padding: 2px 0 14px 12px;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #ffffff;
+	text-shadow: #646454 0px 1px 0px;
+	font-weight: bold;
+	height: 42px;
+} .enyo-button-switched.enyo-collapsible-arrow {
+	height: 33px;
+	width: 56px;
+	background: url(images/palm-divider-arrow.png) center 0px;
+}
+
+.enyo-collapsible-arrow {
+	height: 33px;
+	width: 56px;
+	background: url(images/palm-divider-arrow.png) center -66px;
+}
+
+.enyo-button-down.enyo-switched.enyo-collapsible-arrow {
+	background-position: center -33px;
+}
+
+.enyo-button-down.enyo-collapsible-arrow {
+	background-position: center -99px;
+}.enyo-dialog {
+	position: fixed;
+	z-index: 110;
+	-webkit-box-sizing: border-box;
+	left: 0px;
+	right: 0px;
+	border-width: 32px 24px 32px 24px;
+	-webkit-border-image: url(images/dialog-background.png) 32 24 32 24 stretch stretch;
+	-webkit-transform-style: preserve-3d;
+	bottom: 0px;
+	-webkit-transform: translateY(100%);
+}
+
+.enyo-dialog-inner {
+	margin: -32px -24px -32px -24px;
+	/*padding: 23px 8px 8px 8px;*/
+	padding-top: 23px;
+}.enyo-dialog-prompt-title {
+	color: #4c4c4c;
+	text-shadow: #f2f2f2 0px 0px 1px;
+	font-size: 21px;
+	padding: 0 0 10px 10px;
+	word-wrap: break-word;
+	border-bottom: 1px solid gray;
+}
+
+.enyo-dialog-prompt-message {
+	color: #222;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.enyo-dialog-prompt-content {
+	padding: 10px;
+}.enyo-sliding-shadow {
+	position: absolute;
+	z-index: 1; 
+	height: 100%;
+	width: 20px;
+	left: -20px; 
+	background: url(images/shadow.png) repeat-y;
+	pointer-events: none;
+}
+
+.enyo-sliding-nub {
+	position: absolute;
+	-webkit-box-sizing: border-box;
+	cursor: pointer;
+	z-index: 1; 
+	left: -20px;
+	width: 40px;
+	top: 0;
+	bottom: 0;
+}
+
+
+.enyo-sliding {
+	/* no longer needed to ensure acceleration, using translate3d instead
+		doesn't defeat z-index like preserve-3d seems to.
+	*/
+	/*-webkit-transform-style: preserve-3d;*/
+}
+
+/* An alternative shadow method that uses the unsupported box-shadow */
+/* 
+.enyo-sliding {
+	-webkit-box-shadow: #444 0px 0px 12px;
+}
+*/
+
+/* An alternative shadow method that uses no extra node */
+/*
+.enyo-sliding {
+	background: transparent;
+	background-image: url(images/shadow.png);
+	background-repeat: repeat-y;
+	margin-right: -20px;
+}
+
+.enyo-sliding-client {
+	margin-left: 20px;
+	height: 100%;
+}
+*/
+
+.enyo-sliding-tl-nub {
+	z-index: 10;
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	left: 0;
+	top: 0;
+	background: url(images/tl-nub-5.png);
+}
+
+.enyo-sliding-bl-nub {
+	z-index: 10;
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	left: 0;
+	bottom: 0;
+	background: url(images/bl-nub-5.png);
+}
+
+.enyo-sliding-bl-nub {
+
+}
+
+.enyo-sliding-animate {
+	-webkit-transition: -webkit-transform 0.2s ease-in;
+}.enyo-virtual-scroller {
+	overflow: hidden;
+}/* heritage theme */
+
+.enyo-button {
+	color: white;
+	text-transform: capitalize;
+	font-family: Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	height: 52px;
+	line-height: 52px;
+	border-width: 0 17px;
+	padding: 0;
+}
+
+.enyo-button {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.enyo-button img {
+	padding: 0px 3px;
+}
+
+/* normal button */
+
+.enyo-button {
+	-webkit-border-image: url(images/palm-button-medium.png) 0 17 104 17 repeat repeat;
+}
+
+.enyo-button.enyo-button-down {
+	-webkit-border-image: url(images/palm-button-medium.png) 52 17 52 17 repeat repeat;
+}
+
+.enyo-button.enyo-button-disabled {
+	-webkit-border-image: url(images/palm-button-medium.png) 104 17 0 17 repeat repeat;
+}
+
+/* light button (often cancel) */
+
+.enyo-button-light {
+	color: #332;
+	-webkit-border-image: url(images/palm-button-light.png) 0 17 104 17 repeat repeat;
+}
+
+.enyo-button-light.enyo-button-down {
+	-webkit-border-image: url(images/palm-button-light.png) 52 17 52 17 repeat repeat;
+}
+
+.enyo-button-light.enyo-button-disabled {
+	color: #777;
+	-webkit-border-image: url(images/palm-button-light.png) 104 17 0 17 repeat repeat;
+}
+
+/* affirmative (green) */
+
+.enyo-button-affirmative {
+	color: #fff;
+	-webkit-border-image: url(images/palm-button-affirmative.png) 0 17 104 17 repeat repeat;
+}
+
+.enyo-button-affirmative.enyo-button-down {
+	-webkit-border-image: url(images/palm-button-affirmative.png) 52 17 52 17 repeat repeat;
+}
+
+.enyo-button-affirmative.enyo-button-disabled {
+	-webkit-border-image: url(images/palm-button-affirmative.png) 104 17 0 17 repeat repeat;
+}
+
+/* negative (red) */
+
+.enyo-button-negative {
+	color: #fff;
+	-webkit-border-image: url(images/palm-button-negative.png) 0 17 104 17 repeat repeat;
+}
+
+.enyo-button-negative.enyo-button-down {
+	-webkit-border-image: url(images/palm-button-negative.png) 52 17 52 17 repeat repeat;
+}
+
+.enyo-button-negative.enyo-button-disabled {
+	-webkit-border-image: url(images/palm-button-negative.png) 104 17 0 17 repeat repeat;
+}
+
+/* dark */
+
+.enyo-button-dark {
+	-webkit-border-image: url(images/palm-button-dark.png) 0 17 104 17 repeat repeat;
+}
+
+.enyo-button-dark.enyo-button-down {
+	-webkit-border-image: url(images/palm-button-dark.png) 52 17 52 17 repeat repeat;
+}
+
+.enyo-button-dark.enyo-button-disabled {
+	-webkit-border-image: url(images/palm-button-dark.png) 104 17 0 17 repeat repeat;
+}.enyo-checkbox {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	height: 28px;
+	width: 33px;
+	background-image: url(images/checkbox.png);
+}
+
+.enyo-checkbox-checked {
+	background-position: 0px -28px;
+}
+
+.enyo-checkbox-disabled {
+	background-position: 0px -56px;
+}
+
+.enyo-checkbox-disabled.enyo-checkbox-checked {
+	background-position: 0px -84px;
+}
+.enyo-input {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	cursor: pointer;
+}
+
+.enyo-input:focus {
+	cursor: text;
+}
+.enyo-roundy {
+	border-radius: 11px;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+}
+
+.enyo-roundy-shadow {
+	background-color: transparent;
+	border-width: 14px 14px 14px 14px;
+	border-image: url(images/roundy-shadow.png) 14 14;
+	-webkit-border-image: url(images/roundy-shadow.png) 14 14;
+	-moz-border-image: url(images/roundy-shadow.png) 14 14;
+}
+/* FIXME: this is an invisible form of enyo-roundy-shadow and should be defined elsewhere? */
+.enyo-fancy-input {
+	background-color: transparent;
+	border: 14px solid transparent;
+	vertical-align: middle;
+	min-height: 50px;
+}
+
+.enyo-fancy-input-inner {
+	padding: 6px;
+}
+
+.enyo-fancy-input-client {
+	padding: 0 2px 0 16px;
+}
+
+.enyo-fancy-input-input {
+	width: 100%;
+	display: block;
+}
+
+
+/* 
+FIXME: change the following selectors that rely on nesting; instead apply classes directly
+
+FIXME: we almost always want some padding on a enyo-item, except when it's surrounding 
+		a fancy-input.... so we special case that here, non-ideal 
+*/
+.enyo-item > .enyo-fancy-input {
+	margin: -8px;
+}
+
+.rounded.enyo-first > .enyo-flat-shadow {
+	padding-bottom: 11px;
+	border-width: 14px 14px 3px 14px;
+	border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+	-webkit-border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+	-moz-border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+}
+
+.rounded.enyo-last > .enyo-flat-shadow {
+	padding-top: 11px;
+	border-width: 3px 14px 14px 14px;
+	border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+	-webkit-border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+	-moz-border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+}
+
+.rounded.enyo-single > .enyo-flat-shadow {
+	border-width: 14px 14px 14px 14px;
+	border-image: url(images/roundy-shadow.png) 14 14;
+	-webkit-border-image: url(images/roundy-shadow.png) 14 14;
+	-moz-border-image: url(images/roundy-shadow.png) 14 14;
+}
+
+
+/* deprecated */
+.enyo-flat-shadow {
+	background-color: transparent;
+	border-width: 14px;
+	border-image: url(images/flat-shadow.png) 14 14;
+	-webkit-border-image: url(images/flat-shadow.png) 14 14;
+	-moz-border-image: url(images/flat-shadow.png) 14 14;
+}
+
+.enyo-roundy-shadow-top {
+	background-color: transparent;
+	padding-bottom: 11px;
+	border-width: 14px 14px 3px 14px;
+	border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+	-webkit-border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+	-moz-border-image: url(images/roundy-shadow-top.png) 14 14 3 14;
+}	
+		
+.enyo-roundy-shadow-top-inner {
+	margin: -14px -14px -3px -14px;
+}
+
+.enyo-roundy-shadow-bottom {
+	background-color: transparent;
+	padding-top: 11px;
+	border-width: 3px 14px 14px 14px;
+	border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+	-webkit-border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+	-moz-border-image: url(images/roundy-shadow-bottom.png) 3 14 14 14;
+}
+
+.enyo-roundy-shadow-bottom-inner {
+	margin: -3px -14px -14px -14px;
+}
+
+/**/
+
+.enyo-fancy-right-input {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	text-transform: uppercase;
+	text-align: right;
+	color: #00ABEF;
+}.enyo-button-icon {
+	display: inline-block;
+	vertical-align: baseline;
+	margin: 10px -16px;
+	width: 32px;
+	height: 32px;
+}
+
+.enyo-button-down .enyo-button-icon {
+	background-position: 0 -32px;
+}
+.enyo-menu-button-shape {
+	font-family: Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+	border-width: 0 25px;
+	display: inline-block;
+	color: white;
+	/*text-transform: capitalize;*/
+	padding: 0;
+}
+
+.enyo-menu-button-header-client {
+	text-align: left;
+	margin: 0px -12px;
+	height: 100%;
+	display: block;
+}
+
+/* webkit */
+
+.enyo-menu-button-shape.enyo-button {
+	-webkit-border-image: url(images/palm-menu-button.png) 0 25 200 25;
+}
+
+.enyo-menu-button-shape.enyo-button-down {
+	-webkit-border-image: url(images/palm-menu-button.png) 50 25 150 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed {
+	-webkit-border-image: url(images/palm-menu-button.png) 100 25 100 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(images/palm-menu-button.png) 150 25 50 25;
+}
+
+/* moz */
+
+.enyo-menu-button-shape.enyo-button-button {
+	-moz-box-sizing: border-box;
+}
+
+.enyo-menu-button-shape.enyo-button {
+	-moz-border-image: url(images/palm-menu-button.png) 0 25 200 25;
+}
+
+.enyo-menu-button-shape.enyo-button-down {
+	-moz-border-image: url(images/palm-menu-button.png) 50 25 150 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed {
+	-moz-border-image: url(images/palm-menu-button.png) 100 25 100 25;
+}
+
+.enyo-menu-button-shape.enyo-button-depressed.enyo-button-down {
+	-moz-border-image: url(images/palm-menu-button.png) 150 25 50 25;
+}
+.enyo-menu-toolbutton {
+	white-space: nowrap;
+	color: #fff;
+	text-align: center;
+	cursor: default;
+	height: 50px;
+	min-width: 32px;
+	line-height: 50px;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.enyo-menu-toolbutton.enyo-first {
+	padding: 0px 13px 0px 0px;
+	border-width: 0px 1px 0px 23px;
+	-webkit-border-image: url(images/menu-toolbutton.png) 0 1 950 23;
+}
+
+.enyo-menu-toolbutton.enyo-middle {
+	padding: 0px 14px 0px 14px;
+	border-width: 0px 1px 0px 1px;
+	-webkit-border-image: url(images/menu-toolbutton.png) 250 1 700 1;
+}
+
+.enyo-menu-toolbutton.enyo-single {
+	padding: 0px 14px 0px 14px;
+	border-width: 0px 23px 0px 23px;
+	-webkit-border-image: url(images/menu-toolbutton.png) 750 23 200 23;
+}
+
+.enyo-menu-toolbutton.enyo-last {
+	padding: 0px 0px 0px 13px;
+	border-width: 0px 23px 0px 1px;
+	-webkit-border-image: url(images/menu-toolbutton.png) 500 23 450 1;
+}
+
+/* down */
+.enyo-menu-toolbutton.enyo-first.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 50 1 900 23;
+}
+
+.enyo-menu-toolbutton.enyo-middle.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 300 1 650 1;
+}
+
+.enyo-menu-toolbutton.enyo-single.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 800 23 150 23;
+}
+
+.enyo-menu-toolbutton.enyo-last.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 550 23 400 1;
+}
+
+/* depressed */
+.enyo-menu-toolbutton.enyo-first.enyo-button-depressed {
+	-webkit-border-image: url(images/menu-toolbutton.png) 100 1 850 23;
+}
+
+.enyo-menu-toolbutton.enyo-middle.enyo-button-depressed {
+	-webkit-border-image: url(images/menu-toolbutton.png) 350 1 600 1;
+}
+
+.enyo-menu-toolbutton.enyo-single.enyo-button-depressed {
+	-webkit-border-image: url(images/menu-toolbutton.png) 850 23 100 23;
+}
+
+.enyo-menu-toolbutton.enyo-last.enyo-button-depressed {
+	-webkit-border-image: url(images/menu-toolbutton.png) 600 23 350 1;
+}
+
+/* depressed + down */
+.enyo-menu-toolbutton.enyo-first.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 150 1 800 23;
+}
+
+.enyo-menu-toolbutton.enyo-middle.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 400 1 550 1;
+}
+
+.enyo-menu-toolbutton.enyo-single.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 900 23 50 23;
+}
+
+.enyo-menu-toolbutton.enyo-last.enyo-button-depressed.enyo-button-down {
+	-webkit-border-image: url(images/menu-toolbutton.png) 650 23 300 1;
+}
+
+/* disabled */
+.enyo-menu-toolbutton.enyo-first.enyo-button-disabled {
+	-webkit-border-image: url(images/menu-toolbutton.png) 200 1 750 23;
+}
+
+.enyo-menu-toolbutton.enyo-middle.enyo-button-disabled {
+	-webkit-border-image: url(images/menu-toolbutton.png) 450 1 500 1;
+}
+
+.enyo-menu-toolbutton.enyo-single.enyo-button-disabled {
+	-webkit-border-image: url(images/menu-toolbutton.png) 950 23 0 23;
+}
+
+.enyo-menu-toolbutton.enyo-last.enyo-button-disabled {
+	-webkit-border-image: url(images/menu-toolbutton.png) 700 23 250 1;
+}.enyo-toggle-button {
+	cursor: pointer;
+	min-width: 84px;
+	height: 36px;
+	line-height: 34px;
+	border-width: 0px 15px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.enyo-toggle-thumb-off, .enyo-toggle-thumb-on {
+	width: 36px;
+	height: 36px;
+	border-width: 0px 15px;
+	position: absolute;
+	top: 0px;
+}
+
+.enyo-toggle-label-off, .enyo-toggle-label-on {
+	text-transform: uppercase;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.enyo-toggle-label-off {
+	padding-left: 24px;
+	margin-right: -4px;
+}
+
+.enyo-toggle-label-on {
+	padding-right: 24px;
+	margin-left: -4px;
+}
+
+/* webkit */
+
+.enyo-toggle-button {
+	-webkit-user-select: none;
+	-webkit-box-sizing: border-box;
+	-webkit-border-image: url(images/toggle-box.png) 0 15 72 15 repeat repeat;
+}
+
+.enyo-toggle-thumb-off {
+	-webkit-box-sizing: border-box;
+	-webkit-border-image: url(images/toggle-box.png) 36 15 36 15 repeat repeat;
+	left: -15px;
+}
+
+.enyo-toggle-thumb-on {
+	-webkit-box-sizing: border-box;
+	-webkit-border-image: url(images/toggle-box.png) 72 15 0 15 repeat repeat;
+	right: -15px;
+}
+.enyo-radiogroup {
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.enyo-radiobutton {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	text-transform: uppercase;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-sizing: border-box;
+	font-size: 14px;
+	color: #555;
+}
+
+.enyo-radiobutton.enyo-middle {
+	padding: 0px 13px 0px 14px;
+	border-width: 0px 2px 0px 1px;
+	-webkit-border-image: url(images/radiobutton.png) 150 2 400 1;
+}
+
+.enyo-radiobutton.enyo-single {
+	padding: 0px 13px 0px 14px;
+	border-width: 0px 15px 0px 15px;
+	-webkit-border-image: url(images/radiobutton.png) 450 15 100 15;
+}
+
+.enyo-radiobutton.enyo-first {
+	padding: 0px 13px 0px 0px;
+	border-width: 0px 2px 0px 15px;
+	-webkit-border-image: url(images/radiobutton.png) 0 2 550 15;
+}
+
+.enyo-radiobutton.enyo-last {
+	padding: 0px 0px 0px 13px;
+	border-width: 0px 15px 0px 1px;
+	-webkit-border-image: url(images/radiobutton.png) 300 15 250 1;
+}
+
+.enyo-radiobutton.enyo-button-disabled {
+	color: Silver;
+}
+
+.enyo-radiobutton.enyo-button-depressed,
+.enyo-radiobutton.enyo-button-down {
+	color: white;
+}
+
+/* down */
+
+.enyo-radiobutton.enyo-middle.enyo-button-depressed,
+.enyo-radiobutton.enyo-middle.enyo-button-down {
+	-webkit-border-image: url(images/radiobutton.png) 200 2 350 1;
+}
+
+.enyo-radiobutton.enyo-single.enyo-button-depressed,
+.enyo-radiobutton.enyo-single.enyo-button-down {
+	-webkit-border-image: url(images/radiobutton.png) 500 15 50 15;
+}
+
+.enyo-radiobutton.enyo-first.enyo-button-depressed,
+.enyo-radiobutton.enyo-first.enyo-button-down {
+	-webkit-border-image: url(images/radiobutton.png) 50 2 500 15;
+}
+
+.enyo-radiobutton.enyo-last.enyo-button-depressed,
+.enyo-radiobutton.enyo-last.enyo-button-down {
+	-webkit-border-image: url(images/radiobutton.png) 350 15 200 1;
+}
+
+/* disabled */
+
+.enyo-radiobutton.enyo-middle.enyo-button-disabled {
+	-webkit-border-image: url(images/radiobutton.png) 250 2 300 1;
+}
+
+.enyo-radiobutton.enyo-single.enyo-button-disabled {
+	-webkit-border-image: url(images/radiobutton.png) 550 15 0 15;
+}
+
+.enyo-radiobutton.enyo-first.enyo-button-disabled {
+	-webkit-border-image: url(images/radiobutton.png) 100 2 450 15;
+}
+
+.enyo-radiobutton.enyo-last.enyo-button-disabled {
+	-webkit-border-image: url(images/radiobutton.png) 400 15 150 1;
+}.enyo-prev-next-banner {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.enyo-banner-prev, .enyo-banner-next {
+ 	width: 40px; 
+ 	height: 50px; 
+ 	background: url(images/next-prev.png);
+}
+
+.enyo-banner-prev {
+ 	background-position: 0px 0px;
+}
+
+.enyo-banner-prev.enyo-down {
+ 	background-position: 0px -50px;
+}
+
+.enyo-banner-prev.enyo-disabled {
+ 	background-position: 0px -100px;
+}
+
+.enyo-banner-next {
+ 	background-position: 0px -150px;
+}
+
+.enyo-banner-next.enyo-down {
+ 	background-position: 0px -200px;
+}
+
+.enyo-banner-next.enyo-disabled {
+ 	background-position: 0px -250px;
+}
+
+.enyo-banner-content {
+ 	white-space: normal;
+	overflow: hidden;
+ 	vertical-align: middle;
+}.enyo-divider,
+.enyo-divider-right-cap,
+.enyo-divider-left-cap {
+	height: 7px;
+	margin: 15px 0px;
+}
+
+.enyo-divider {
+	background: url(images/enyo-divider.png) left top repeat-x;
+}
+
+.enyo-divider-right-cap,
+.enyo-divider-left-cap {
+	min-width: 4px;
+	border-width: 0px;
+	-webkit-border-image: url(images/enyo-divider-border.png) 0 6 0 6 repeat repeat;
+}
+
+.enyo-divider-right-cap {
+	border-right-width: 6px;
+	margin-right: 6px;
+}
+
+.enyo-divider-left-cap {
+	border-left-width: 6px;
+	margin-left: 6px;
+
+	/* Needs to be effectively infinity compared to .enyo-divider-caption's
+ 	   flex so the left cap will take as much space as possible */
+	-webkit-box-flex: 1000;
+}
+
+.enyo-divider-icon {
+	margin: 0 6px;
+}
+
+.enyo-divider-icon-collapse {
+	margin: 0 6px 0 0;
+}
+
+.enyo-divider-caption {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: bold;
+	font-size: 12pt;
+	color: #2d6c94;
+
+	/* Needs to be effectively zero compared to .enyo-divider-left-cap's
+	   flex so the caption will flex but take as little space as possible
+	   and still truncate properly */
+	-webkit-box-flex: .1;
+}
+
+.enyo-divider-alpha {
+	background: url(images/alpha-divider.png) left center repeat-x;
+	height: 23px;
+	line-height: 23px;
+	margin: 7px 0;
+}
+
+.enyo-divider-alpha-caption {
+	padding: 0 23px;
+	font-size: 12pt;
+	color: #ffffff;
+}
+.enyo-page-header {
+	border-width: 35px 24px 13px 24px;
+	-webkit-border-image: url(images/palm-page-header.png) 35 24 13 24 repeat stretch;
+	-webkit-box-sizing: border-box;
+	min-height: 50px;
+	color: #444;
+}
+
+.enyo-page-header-inner {
+	margin: -35px -24px -13px -24px;
+	padding: 13px 16px;
+}
+
+.enyo-page-header-icon {
+	padding-right: 10px;
+}.enyo-menu-input {
+	height: 50px;
+	line-height: 50px;
+	border-width: 0 25px;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-border-image: url(images/palm-menu-input.png) 0 25 50 25 stretch stretch;
+}
+
+.enyo-menu-input-inset {
+	-webkit-border-image: url(images/palm-menu-input.png) 50 25 0 25 stretch stretch;
+}
+
+.enyo-menu-input .enyo-fancy-input-inner {
+	padding: 9px;
+	margin: 0px -12px;
+}
+
+.enyo-menu-input .enyo-input {
+	color: white;
+	font-size: 16px;
+	margin: 4px 0;
+}
+
+.enyo-menu-input .enyo-input-focused {
+	color: white;
+}.enyo-command-menu {
+	z-index: 1;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 50px;
+	background: url(images/bottom-fade.png) 0 27px repeat-x;
+	pointer-events: none;
+	/* button margin/border can overflow this container */
+	overflow: hidden;
+}
+
+.enyo-command-menu *  {
+	pointer-events: auto;
+}.enyo-item {
+	border-top: 1px solid white;
+	border-bottom: 1px solid silver;
+	padding: 8px;
+}
+
+.enyo-held {
+	/*background-color: gray;*/
+	/* fancy... can we get away with this or do we need to use images? */
+	background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#888));
+	border-top-color: #555;
+}
+
+.enyo-disabled {
+	color: gray;
+}
+
+.enyo-item.enyo-first {
+	border-top: 0;
+}
+
+.enyo-item.enyo-last {
+	border-bottom: 0;
+}
+
+.enyo-item.enyo-single {
+	border: 0;
+}
+
+.enyo-item.rounded {
+	-webkit-border-radius: 12px;
+}
+
+.enyo-item.rounded.enyo-first {
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
+.enyo-item.rounded.enyo-middle {
+	-webkit-border-radius: 0;
+}
+
+.enyo-item.rounded.enyo-last {
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-top-left-radius: 0;
+}.enyo-swipeableitem {
+	min-height: 54px;
+}.enyo-popup {
+	min-width: 50px;
+	z-index: 120;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	font-size: 16px;
+	-webkit-box-sizing: border-box;
+	border-width: 24px;
+	-webkit-border-image: url(images/popup.png) 24 24 24 24 stretch stretch;
+}
+
+.enyo-popup-inner {
+	/*margin: -15px -16px;*/
+	margin: -7px -16px;
+	/* NOTE: experimental use of css clipping to solve highlights not overflowing curved corners */
+	/* does not work on pre/emulator as of build 3455. */
+	/*-webkit-mask-box-image: url(images/popup-mask.png) 10 10 10 10 stretch stretch;*/
+	
+}.enyo-popupmenuitem {
+}
+
+/*
+	FIXME: rounded items in a popup have a slightly smaller radius than in a group
+	can we just change this?
+*/
+.enyo-popupmenuitem .enyo-item.rounded {
+	-webkit-border-radius: 8px;
+}
+
+.enyo-popupmenuitem .enyo-item.rounded.enyo-first {
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
+.enyo-popupmenuitem .enyo-item.rounded.enyo-middle {
+	-webkit-border-radius: 0;
+}
+
+.enyo-popupmenuitem .enyo-item.rounded.enyo-last {
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-top-left-radius: 0;
+}
+
+.enyo-popupmenuitem-caption {
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
+	padding: 2px 0;
+}
+
+.enyo-popupmenuitem-icon {
+	padding: 2px 8px;
+}
+
+.enyo-popupmenuitem-arrow.enyo-depressed,
+.enyo-popupmenuitem-arrow.enyo-down {
+	background: url(images/system-menu-arrow.png) center -24px;
+}
+
+.enyo-popupmenuitem-arrow {
+	height: 24px;
+	width: 30px;
+	background: url(images/system-menu-arrow.png) center 0px;
+}
+
+.enyo-popupmenuitem.enyo-checked .enyo-popupmenucheckitem-caption {
+	background: url(images/checkmark.png) center right no-repeat;
+}
+
+.enyo-popupmenucheckitem-caption {
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
+	padding: 2px 34px 2px 0;
+}.enyo-listselector-arrow {
+	min-height: 34px;
+	width: 14px;
+	background: url(images/menu-arrow.png) center right no-repeat;
+}
+
+.enyo-listselector-label {
+	float: right;
+	margin: 1px 4px 0px 4px;
+	line-height: 34px;
+	font-size: 14px;
+	color: #1F75BF;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.enyo-listselector-item {
+	border: 0;
+	padding: 0;
+}.enyo-appmenu {
+	z-index: 120;
+	position: fixed;
+	font-size: 18px;
+	border-width: 30px 28px 35px 28px;
+	-webkit-border-image: url(images/system-menu-background.png) 30 28 35 28 stretch stretch;
+	color: white;
+	top: -2px;
+	left: -6px;
+	min-width: 210px;
+}
+
+.enyo-appmenu-inner {
+	margin: -9px -20px;
+}
+
+
+/*
+	App menu item styling strategy; apply a border image with top and bottom border.
+	Apply row styling to all menu controls, e.g. top, middle, bottom, single
+	* Top border is 1px except for top / single items
+	* Bottom border is 1px if a control with items is collapsed and 2px if it's expanded
+	* Bottom border is 0 if it's the absolute bottom control in the menu (menu-bottom)
+	NOTE: this menu-bottom is dynamically calculated by the PopupMenu
+*/
+.enyo-appmenu .enyo-item {
+	-webkit-border-image: url(images/system-menu-item-divider.png) 1 0 1 0 stretch;
+	border-bottom: 0px;
+}
+
+.enyo-appmenu .enyo-item.enyo-first, .enyo-appmenu .enyo-item.enyo-single {
+	border-top: 0;
+}
+
+.enyo-appmenu .enyo-item.enyo-has-items.collapsed {
+	border-bottom: 1px;
+}
+
+.enyo-appmenu .enyo-item.enyo-has-items {
+	border-bottom: 2px;
+}
+
+.enyo-appmenu .enyo-item.enyo-has-items.enyo-menu-last, .enyo-appmenu .enyo-item.has-items.collapsed.enyo-menu-last {
+	border-bottom: 0px;
+}.enyo-viewimage-image {
+	display: block;
+	margin: auto;
+}.enyo-picker-button {
+	-webkit-border-image: url(images/background-pill.png) 19 19 19 19 repeat repeat;
+	border-width: 19px;
+	margin: 2px 5px -2px -1px;
+}
+
+.enyo-picker-button-caption {
+	margin: -15px -8px -17px -11px;
+	line-height: 48px;
+	padding: 0 11px;
+	color: #000;
+	min-width: 24px;
+	text-align: center;
+}
+
+.enyo-picker-button.enyo-button {
+	-webkit-border-image: url(images/background-pill.png) 19 19 19 19 repeat repeat;
+}
+
+.enyo-picker-button.enyo-button-down {
+	-webkit-border-image: url(images/background-pill-downstate.png) 19 19 19 19 repeat repeat;
+}
+
+.enyo-picker-button.enyo-button-focus {
+	-webkit-border-image: url(images/background-pill-focus.png) 19 19 19 19 repeat repeat;
+}
+.enyo-picker-label {
+	color: #1F75BF;
+	font-size: 14px;
+	text-shadow: white 0px 1px 0px;
+	text-transform: uppercase;
+	float: left;
+	margin: 20px 4px 0px 13px;
+	padding-right: 5px;
+}
+
+.enyo-picker-popup {
+	font-size: 20px;
+	border-width: 19px;
+	-webkit-border-image: url(images/popup-picker.png) 19 19 19 19 stretch stretch;
+}
+
+.enyo-picker-item-selected {
+	font-weight: bold;
+	background: #fff;
+}.enyo-pickergroup-above-scrim {
+	z-index: 110;
+}
+.enyo-progress-bar {
+	height: 11px;
+	border-width: 0 6px;
+	-webkit-border-image: url(images/progress-bar.png) 0 6 0 6 repeat repeat;
+	-webkit-box-sizing: border-box;
+}
+
+.enyo-progress-bar-inner {
+	margin: 0 -6px;
+	height: 11px;
+	border-width: 0 6px;
+	position: absolute;
+	-webkit-border-image: url(images/progress-bar-inner.png) 0 6 0 6 repeat repeat;
+}.enyo-progress-pill {
+	height: 50px;
+	border-width: 0 25px;
+	-webkit-border-image: url(images/palm-menu-button.png) 0 25 200 25;
+	-webkit-box-sizing: border-box;
+	color: white;
+}
+
+.enyo-progress-pill-inner {
+	height: 50px;
+	margin: 0 -25px;
+	border-width: 0 25px;
+	position: absolute;
+	-webkit-border-image: url(images/progress-pill-inner.png) 0 25 0 25 repeat repeat;
+}
+
+.enyo-progress-pill-client {
+	margin: 0 -10px;
+}.enyo-slider-button {
+	height: 50px;
+	width: 50px;
+	z-index: 50;
+	background: url(images/slider-button.png) left top no-repeat;
+	position: absolute;
+	margin: -22px -25px;
+}
+
+.enyo-slider-button.enyo-button-down {
+	background-position-y: -50px;
+}
+
+.enyo-slider {
+	/* 
+	FIXME: why in the heck does this work to properly position the progress
+	div inside this one?
+	*/
+	padding: 1px 0;
+}
+
+.enyo-slider-progress {
+	height: 7px;
+	border-width: 0px 4px;
+	-webkit-border-image: url(images/slider.png) 0 4 0 4 repeat repeat;
+	margin: 22px 25px 21px;
+}
+
+.enyo-slider-inner {
+	margin: 0 -4px;
+}.enyo-progressslider-progress {
+	height: 11px;
+	margin: 20px 25px 19px;
+}.enyo-confirmprompt {
+}
+
+.enyo-confirmprompt-scrim {
+	background-color: rgba(228, 228, 226, .5);
+}
+
+.enyo-confirmprompt-button {
+	margin: 0 10px;
+}
+.enyo-spinner {
+	width: 32px;
+	height: 32px;
+	-webkit-box-sizing: border-box;
+	background-image: url(images/spinner.png);
+}
+
+.enyo-spinner-large {
+	width: 128px;
+	height: 128px;
+	-webkit-box-sizing: border-box;
+	background-image: url(images/spinner-large.png);
+}.enyo-nouveau.enyo-command-menu {
+	position: relative;
+	pointer-events: auto;
+	z-index: 3;
+	overflow: visible;
+	background: url(images/command-menu-shadow-bg.png) left top repeat-x;
+	height: 60px;
+	padding-top: 10px;
+	margin-top: -10px;
+}
+
+/* Top shadow method using unsupported box-shadow */
+/* NOTE: we've chosen to back the shadow into the background image. Taps on the shadow will not process
+through to underlying elements. If that's deemed important, we can use a top shadow div that does not
+process events.  */
+/*
+.enyo-nouveau.enyo-command-menu {
+	background: #c3c3c3 url(images/command-menu-bg.png) left top repeat-x;
+}
+
+.enyo-nouveau.enyo-command-menu {
+-webkit-box-shadow: #444 0px 0px 10px;
+*/
+.enyo-nouveau.enyo-menu-button-shape {
+	color: #606060;
+	-webkit-border-image: url(images/command-button-bg.png) 0 25 50 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-down {
+	-webkit-border-image: url(images/command-button-bg.png) 50 25 0 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-default {
+	-webkit-border-image: url(images/command-button-bg.png) 0 25 50 25;
+}
+
+.enyo-nouveau.enyo-menu-button-shape.enyo-button-default.enyo-button-down {
+	-webkit-border-image: url(images/command-button-bg.png) 50 25 0 25;
+}
+
+.enyo-command-menu-draghandle {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-image: url(images/drag-handle.png);
+	z-index: 1;
+	left: 0px;
+	-webkit-user-drag: none;
+	cursor: pointer;
+}.enyo-nouveau.enyo-item {
+	border-top-color: #ededed;
+	border-bottom-color: #afafaf;
+}
+
+.enyo-nouveau.enyo-item.enyo-held {
+	border-top-color: #b0cdeb;
+	background: url(images/down-bg.png) left top no-repeat;
+	-webkit-background-size: 100% 100%;
+}.enyo-nouveau.enyo-page-header {
+	-webkit-border-image: none;
+	border-style: solid;
+	border-color: transparent transparent #7e8081 transparent;
+	border-bottom-width: 1px;
+	padding-bottom: 12px;
+	min-height: 50px;
+	background: #b5b8ba url(images/page-header-gradient.png) left -35px repeat-x;
+	color: #000000;
+	text-shadow: 1px 1px #ddd;
+}
