@@ -1,0 +1,9 @@
+{
+	"id": "com.funkatron.app.wildgarlic",
+	"version": "0.1.0",
+	"vendor": "Funkatron Productions",
+	"type": "web",
+	"main": "index.html",
+	"title": "WildGarlic",
+	"icon": "icon.png"
+}

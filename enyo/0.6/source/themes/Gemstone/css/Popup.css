@@ -1,0 +1,9 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-gemstone.enyo-popup {
+	border-width: 24px;
+	-webkit-border-image: url(../images/popup.png) 24 24 24 24 stretch stretch;
+}
+
+.enyo-gemstone.enyo-popup-inner {
+	/*margin: -7px -16px;*/
+}

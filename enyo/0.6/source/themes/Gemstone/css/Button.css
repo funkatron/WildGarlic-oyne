@@ -1,0 +1,114 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-gemstone.enyo-button {
+	color: #252525;
+	text-transform: capitalize;
+	font-family: Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 18px;
+	height: 34px;
+	line-height: 34px;
+	border-width: 0px 10px;
+}
+
+.enyo-gemstone.enyo-button {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.enyo-gemstone.enyo-button img {
+	padding: 0px 3px;
+}
+
+/* normal button */
+
+.enyo-gemstone.enyo-button {
+	-webkit-border-image: url(../images/button-labeled.png) 0 10 34 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button.enyo-button-down {
+	-webkit-border-image: url(../images/button-labeled.png) 33 10 1 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button.enyo-button-disabled {
+	color: #ddd;
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+/* light button (often cancel) */
+
+.enyo-gemstone.enyo-button-light {
+	color: #332;
+	-webkit-border-image: url(../images/button-labeled.png) 0 10 34 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-light.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-light.enyo-button-down {
+	-webkit-border-image: url(../images/button-labeled.png) 33 10 1 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-light.enyo-button-disabled {
+	color: #777;
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+/* affirmative (green) */
+
+.enyo-gemstone.enyo-button-affirmative {
+	color: #fff;
+	-webkit-border-image: url(../images/button-labeled.png) 0 10 34 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-affirmative.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-affirmative.enyo-button-down {
+	-webkit-border-image: url(../images/button-labeled.png) 33 10 1 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-affirmative.enyo-button-disabled {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+/* negative (red) */
+
+.enyo-gemstone.enyo-button-negative {
+	color: #fff;
+	-webkit-border-image: url(../images/button-labeled.png) 0 10 34 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-negative.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-negative.enyo-button-down {
+	-webkit-border-image: url(../images/button-labeled.png) 33 10 1 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-negative.enyo-button-disabled {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+/* dark */
+
+.enyo-gemstone.enyo-button-dark {
+	-webkit-border-image: url(../images/button-labeled.png) 0 10 34 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-dark.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-dark.enyo-button-down {
+	-webkit-border-image: url(../images/button-labeled.png) 33 10 1 10 repeat repeat;
+}
+
+.enyo-gemstone.enyo-button-dark.enyo-button-disabled {
+	-webkit-border-image: url(../images/button-labeled.png) 34 10 0 10 repeat repeat;
+}

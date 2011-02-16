@@ -1,0 +1,12 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-nouveau.enyo-header {
+	-webkit-border-image: none;
+	border-style: solid;
+	border-color: transparent transparent #7e8081 transparent;
+	border-bottom-width: 1px;
+	padding-bottom: 12px;
+	min-height: 50px;
+	background: #b5b8ba url(../images/page-header-gradient.png) left -35px repeat-x;
+	color: #000000;
+	text-shadow: 1px 1px #ddd;
+}

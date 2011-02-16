@@ -1,0 +1,37 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-richtext {
+	word-wrap: break-word;
+	cursor: text;
+	border: none;
+	outline: none;
+	overflow: hidden;
+	/*padding: 12px;*/
+	margin: 12px;
+}
+
+.enyo-richtext-hint {
+	color: #A9A9A9;
+}
+
+/* webkit */
+.enyo-richtext {
+	-webkit-user-select: text;
+	-webkit-user-modify: read-write;
+	-webkit-line-break: after-white-space;
+}
+
+.enyo-richtext.enyo-richtext-plaintext {
+	-webkit-user-modify: read-write-plaintext-only;
+}
+
+.enyo-richtext.enyo-richtext-disabled, .enyo-richtext.enyo-richtext-plaintext.enyo-richtext-disabled {
+	-webkit-user-modify: read-only;
+}
+
+/* moz */
+.enyo-richtext {
+	-moz-user-select: text;
+	/* note: doesn't work, need contenteditable */
+	-moz-user-modify: read-write;
+	-moz-line-break: after-white-space;
+}

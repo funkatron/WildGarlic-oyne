@@ -1,0 +1,23 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-gemstone.enyo-footer {
+	position: relative;
+	z-index: auto;
+	overflow: visible;
+	background: url(../images/footer.png) left top repeat-x;
+	height: 60px;
+	padding-top: 10px;
+	margin-top: -10px;
+}
+
+/* Top shadow method using unsupported box-shadow */
+/* NOTE: we've chosen to back the shadow into the background image. Taps on the shadow will not process
+through to underlying elements. If that's deemed important, we can use a top shadow div that does not
+process events.  */
+/*
+.enyo-nouveau.enyo-footer {
+	background: #c3c3c3 url(../images/footer.png) left top repeat-x;
+}
+
+.enyo-nouveau.enyo-footer {
+-webkit-box-shadow: #444 0px 0px 10px;
+*/

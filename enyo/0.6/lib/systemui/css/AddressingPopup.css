@@ -1,0 +1,32 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.addressing-popup {
+	background: #ffffff;
+	border-width: 0;
+	width: 100%;
+	height: 5000px;
+}
+
+.addressing-showall-button {
+	float: right;
+	background: url(../images/address-book.png) left top no-repeat;
+	width: 38px;
+	height: 40px;
+}
+
+.addressing-expand-button {
+	color: #1F75BF;
+	font-size: 14px;
+
+	/* Accommodate for -webkit-inline-box positioning when changing
+	 * font-size to smaller than the rest of the contact-atoms
+	 */
+	top: -2px;
+}
+
+.addressing-showall-button.buttony {
+	background-position: left bottom;
+}
+
+.addressing-showall-button.enyo-button-down {
+	background-position: left -40px;
+}

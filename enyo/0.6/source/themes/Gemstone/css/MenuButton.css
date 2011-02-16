@@ -1,0 +1,51 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.enyo-gemstone.enyo-menu-button-shape {
+	font-family: Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+	border-width: 0 25px;
+	display: inline-block;
+	color: white;
+	/*text-transform: capitalize;*/
+	padding: 0;
+}
+
+.enyo-gemstone.enyo-menu-button-header-client {
+	text-align: left;
+	margin: 0px -12px;
+	height: 100%;
+	display: block;
+}
+
+.enyo-gemstone.enyo-menu-button-shape {
+	color: #606060;
+	-webkit-border-image: url(../images/button-menu.png) 0 25 50 25;
+}
+
+.enyo-gemstone.enyo-menu-button-shape.enyo-button-down {
+	-webkit-border-image: url(../images/button-menu.png) 50 25 0 25;
+}
+
+.enyo-gemstone.enyo-menu-button-shape.enyo-button-depressed {
+	-webkit-border-image: url(../images/button-menu.png) 50 25 0 25;
+}
+
+.enyo-gemstone.enyo-menu-button-shape.enyo-button-default {
+	-webkit-border-image: url(../images/button-menu.png) 0 25 50 25;
+}
+
+.enyo-gemstone.enyo-menu-button-shape.enyo-button-default.enyo-button-down {
+	-webkit-border-image: url(../images/button-menu.png) 50 25 0 25;
+}
+
+enyo-gemstone.enyo-menu-draghandle {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-image: url(../images/drag-handle.png);
+	z-index: 1;
+	left: 0px;
+	-webkit-user-drag: none;
+	cursor: pointer;
+}
