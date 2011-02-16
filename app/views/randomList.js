@@ -39,6 +39,7 @@ enyo.kind(
 
 	loadData: function(inSender) {
 		this.$.udRandom.call();
+		this.owner.showSpinner(true);
 	},
 
 	setupRow: function(inSender, inIndex) {
@@ -55,15 +56,16 @@ enyo.kind(
 	},
     gotRandomResults: function(inSender, inResponse, inRequest) {
 		this.data = inResponse.list;
+		this.owner.showSpinner(false);
 		this.$.list.refresh();
     },
     gotRandomFailure: function(inSender, inResponse, inRequest) {
         // stuff
+        this.owner.showSpinner(false);
     },
 	itemClick: function(inSender, inEvent, inIndex) {
 		var row = this.data[inIndex];
-	    this.owner.$['panel-definition'].showDefinition(row);
-	    this.owner.$.slidingGroup.setSelected(this.owner.$['panel-definition']);
+        this.owner.showDefinition(row);
 	}
 
 });

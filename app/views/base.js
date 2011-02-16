@@ -9,7 +9,7 @@ enyo.kind({
 		{kind: "PageHeader", content: "WildGarlic for UrbanDictionary"},
 		
 		
-		{kind: "SlidingGroup", flex: 1, wideWidth: 800, components: [
+		{kind: "SlidingGroup", name:'sliding-group', flex: 1, wideWidth: 800, components: [
 			
 			
 			/*
@@ -17,23 +17,28 @@ enyo.kind({
 			*/
 			{name:'panel-search', width:'320px', components:[
 
-			        // search box
-    				{className: "enyo-row", components: [
-    					{kind: "FancyInput", name:'searchterm', hint: "Search for...", components: [
-    						{kind: "Button", caption: "Search", onclick: "searchBtnClick"}
-    					]}
-    				]},
-                    
-                    // searchlist component
-                    {kind:'wg.view.searchList', name:'search-flexbox'},
-                    
-                    // randomlist component
-                    {kind:'wg.view.randomList', name:'random-flexbox'},
-    				
+		        // search box
+				{className: "enyo-row", components: [
+					{kind: "FancyInput", name:'searchterm', hint: "Search for...", components: [
+					    {kind: "MenuButton", className:'search-button', icon: "images/menu-icon-search.png", name:"searchBtn", onclick: "searchBtnClick"},
+						{kind: "Spinner", className:'search-spinner', name:"searchSpnr", spinning: false}
+					]}
+				]},
+                
+                // searchlist component
+                {kind:'wg.view.searchList', name:'search-flexbox'},
+                
+                // randomlist component
+                {kind:'wg.view.randomList', name:'random-flexbox'},
+				
+				
+				{kind: "CommandMenu", name:'commandmenu-slider', pack: "center", components: [
     				// random button
-					{className: "enyo-row", components: [
-        				{kind: "Button", caption: "Get Random Entries", onclick: "randomBtnClick"}
+    				{kind: "MenuToolbar", components: [
+        				{caption:"Load random entries", onclick: "randomBtnClick"}
         			]}
+        		]}
+        		
         	
 			]},
 
@@ -57,8 +62,13 @@ enyo.kind({
 		this.inherited(arguments); // call the parent
         // this.$['search-list'].pageSize = this.pageSize;
 		
+		this.showSpinner(false);
+		
 		this.$['search-flexbox'].show();
 		this.$['random-flexbox'].hide();
+		
+		this.setBackButtonState();
+		this.showRandomButton(true);
 	},
 	
 
@@ -83,17 +93,58 @@ enyo.kind({
 		this.$['random-flexbox'].loadData();
 	},
 	
+	
+	showSpinner: function(on) {
+	    if (!!on) {
+            this.$['searchBtn'].hide();
+            this.$['searchSpnr'].show();
+    		this.$['searchSpnr'].spinning = true;
+	    } else {
+	        this.$['searchBtn'].show();
+    		this.$['searchSpnr'].hide();
+    		this.$['searchSpnr'].spinning = false;
+	    }
+		
+	},
 
 	
-	permalinkClick: function(inSender, e) {
-		inSender.content;
+	showDefinition: function(row) {
+		this.$['panel-definition'].showDefinition(row);
+		this.$['sliding-group'].setSelected(this.$['panel-definition']);
+		this.setBackButtonState();
+		this.showRandomButton(false);
 	},
 	
 	backHandler: function(inSender, e) {
-		this.$.slidingGroup.back(e);
+		this.$['sliding-group'].back(e);
+		this.$['commandmenu-slider'].show();
 	},
+	
 	resizeHandler: function() {
-		this.$.slidingGroup.resize();
+		this.$['sliding-group'].resize();
+		this.setBackButtonState();
+	},
+	
+	
+	showRandomButton: function(on) {
+
+	    if (document.width < this.$['sliding-group'].wideWidth) {
+	        if (!!on) {
+                this.$['commandmenu-slider'].show();
+            } else {
+                this.$['commandmenu-slider'].hide();
+            }
+		} else { // always show if wide
+            this.$['commandmenu-slider'].show();
+		}
+	},
+	
+	setBackButtonState: function() {
+	    if (document.width < this.$['sliding-group'].wideWidth) {
+		    this.$['panel-definition'].$['back-button'].show();
+		} else {
+	        this.$['panel-definition'].$['back-button'].hide();		
+		}
 	}
 	
 	
