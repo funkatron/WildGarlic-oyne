@@ -4,8 +4,9 @@
 	text-shadow:1px 2px #000;
 }
 
-.search-spinner {
-	margin:7px 0px 6px 0px;
+.searchSpinner {
+	margin:0px;
+	padding:0px;
 	display:inline-block;
 }
 
@@ -27,7 +28,6 @@
 
 
 .definitionExample {
-	font-style: italic;
 }
 
 .item-thumbs-up {
@@ -44,15 +44,16 @@
 
 .definitionContainer {
 	color:#666;
-	font-family:Times, serif;
-	padding:1em;
+	font-family: Prelude, "Prelude Medium", "Segoe UI", Arial, Helvetica, sans-serif;
+	padding: 1em;
 	font-size:.9em;
 }
 
 .definitionHeader {
 	color:#444;
-	font-size:1.5em;
+	font-size:2em;
 	padding:0 0 .5em;
+	font-family: PreludeWGL-Light, "Prelude Light", Prelude, "Prelude Medium", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 h3 {
@@ -64,6 +65,8 @@ h3 {
 
 .definitionExample {
 	padding-top:1em;
+	font-family: Prelude;
+	font-style: italic;
 }
 
 .definitionDefinition, .definitionExample, .definitionPermalink {

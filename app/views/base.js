@@ -10,10 +10,9 @@ enyo.kind({
 				{className:"pageHeaderText", content:"WildGarlic"},
 				{kind:"Spacer", flex:1},
 				{kind: "ToolInput", alwaysLooksFocused: true, name:'searchterm', hint: "Search for...", components: [
-					{kind: "Spinner", className:'search-spinner', name:"searchSpnr", spinning: false}
 				]},
 				{kind: "ToolButton", className:'searchButton', icon: "images/menu-icon-forward.png", name:"searchBtn", onclick: "searchBtnClick"},
-				
+				{kind: "Spinner", className:'searchSpinner', name:"searchSpnr", spinning: false}				
 			]}
 		]},
 		{kind: "SlidingPane", name:'slidingPane', flex:1, components: [
