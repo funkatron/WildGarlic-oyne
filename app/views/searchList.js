@@ -1,40 +1,42 @@
 /*
 	flex box to contain results
 */
-enyo.kind(
-    {kind: enyo.HFlexBox, name:'wg.view.searchList', flex: 1, components: [
-        /*
+enyo.kind({
+	kind: enyo.HFlexBox,
+	name:'wg.searchList',
+	components: [
+		/*
 			hidden webservice component
 		*/
 		{name: "udSearch", kind: "WebService", onSuccess: "gotSearchResults", onFailure: "gotSearchFailure"},
 		
-        
-    	{name: "list", kind: enyo.VirtualList, flex: 1, 
-    		onSetupRow: "setupRow",
-    		onAcquirePage: "acquirePage",
-    		onDiscardPage: "discardPage",
-    		components: [
-    			/*
-    				Item row
-    			*/
-    			{kind: "Item", onclick: "itemClick", components: [
-    				{kind:enyo.HFlexBox, flex:1, components: [
-    						{name: "item-word", className:'item-word', flex:1},
-    						{kind:enyo.HFlexBox, components: [
-    								{name: "item-thumbs_up", className:'item-thumbs-up'},
-    								{content:'/'},
-    								{name: "item-thumbs_down", className:'item-thumbs-down', flex:1, style:'align:right'}
-    							]
-    						}
-    					]
-    				},
-    				{name: "item-definition", className:'item-definition', flex:1}
-    			]}
-    		]
-    	}
-    ],
-    pageSize: 5,
-    // what's this magic method?
+		
+		{name: "list", kind: enyo.VirtualList, flex: 1, 
+			onSetupRow: "setupRow",
+			onAcquirePage: "acquirePage",
+			onDiscardPage: "discardPage",
+			components: [
+				/*
+					Item row
+				*/
+				{kind: "Item", onclick: "itemClick", components: [
+					{kind:enyo.HFlexBox, flex:1, components: [
+							{name: "item-word", className:'item-word', flex:1},
+							{kind:enyo.HFlexBox, components: [
+									{name: "item-thumbs_up", className:'item-thumbs-up'},
+									{content:'/'},
+									{name: "item-thumbs_down", className:'item-thumbs-down', flex:1, style:'align:right'}
+								]
+							}
+						]
+					},
+					{name: "item-definition", className:'item-definition', flex:1}
+				]}
+			]
+		}
+	],
+	pageSize: 5,
+	// what's this magic method?
 	constructor: function() {
 		this.inherited(arguments); // call the parent version
 		this.pages = [];
@@ -42,11 +44,11 @@ enyo.kind(
 	},
 	
 	startSearch: function(searchterm) {
-	    this.searchterm = searchterm;
-	    
-	  	this.$.list.punt(); // what's this?
+		this.searchterm = searchterm;
+		
+		this.$.list.punt(); // what's this?
 		this.$.list.reset(); // what's this?
-		this.$.list.refresh();  
+		this.$.list.refresh();	
 	},
 	
 	// what's this magic method?
@@ -109,7 +111,7 @@ enyo.kind(
 	},
 	
 	gotSearchFailure: function(inSender, inResponse, inRequest) {
-	    this.owner.showSpinner(false);
+		this.owner.showSpinner(false);
 		alert('Error getting results');
 	},
 	
@@ -151,7 +153,7 @@ enyo.kind(
 		
 		var row = this.fetchRow(inIndex);
 		
-	    this.owner.showDefinition(row);
+		this.owner.showDefinition(row);
 	}
-    
+	
 });

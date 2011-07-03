@@ -1,51 +1,47 @@
 enyo.kind({
-	name: "wg.view.base",
+	name: "wg.base",
 	kind: enyo.VFlexBox,
 	components: [
-		
 		/*
 			page header
 		*/
-		{kind: "PageHeader", content: "WildGarlic for UrbanDictionary"},
-		
-		
-		{kind: "SlidingGroup", name:'sliding-group', flex: 1, wideWidth: 800, components: [
-			
-			
-			/*
-				search panel
-			*/
-			{name:'panel-search', width:'320px', components:[
-
-		        // search box
-				{className: "enyo-row", components: [
-					{kind: "FancyInput", name:'searchterm', hint: "Search for...", components: [
-					    {kind: "MenuButton", className:'search-button', icon: "images/menu-icon-search.png", name:"searchBtn", onclick: "searchBtnClick"},
-						{kind: "Spinner", className:'search-spinner', name:"searchSpnr", spinning: false}
-					]}
+		{name: "header", kind: "PageHeader", className:"enyo-header-dark", components: [
+			{kind: "HFlexBox", flex:1, components: [
+				{className:"pageHeaderText", content:"WildGarlic"},
+				{kind:"Spacer", flex:1},
+				{kind: "ToolInput", alwaysLooksFocused: true, name:'searchterm', hint: "Search for...", components: [
+					{kind: "Spinner", className:'search-spinner', name:"searchSpnr", spinning: false}
 				]},
-                
-                // searchlist component
-                {kind:'wg.view.searchList', name:'search-flexbox'},
-                
-                // randomlist component
-                {kind:'wg.view.randomList', name:'random-flexbox'},
+				{kind: "ToolButton", className:'searchButton', icon: "images/menu-icon-forward.png", name:"searchBtn", onclick: "searchBtnClick"},
 				
-				
-				{kind: "CommandMenu", name:'commandmenu-slider', pack: "center", components: [
-    				// random button
-    				{kind: "MenuToolbar", components: [
-        				{caption:"Load random entries", onclick: "randomBtnClick"}
-        			]}
-        		]}
-        		
-        	
+			]}
+		]},
+		{kind: "SlidingPane", name:'slidingPane', flex:1, components: [
+			/******************
+				search panel
+			******************/
+			{name:'panel-search', width:'320px', components:[
+				// searchlist component
+				{kind:'wg.searchList', name:'searchFlexbox', flex:1},
+				// randomlist component
+				{kind:'wg.randomList', name:'randomFlexbox', flex:1},
+				{kind: "Toolbar", name:'commandmenuSlider', pack: "center", components: [
+					// random button
+					{kind: "GrabButton"},
+					{caption: "Load random entries", onclick: "randomBtnClick"}
+				]}
 			]},
 
-            /*
-                definition panel
-            */
-            {kind:'wg.view.definitionPanel', name:"panel-definition"}
+			/******************
+				search panel
+			******************/		
+			{name: 'panel-right', flex:1, components: [
+				{
+					flex:1,
+					name:"panelDefinition",
+					kind:"WGDefinitionPanel"
+				}
+			]}
 		]}
 		
 	],
@@ -60,14 +56,16 @@ enyo.kind({
 	// what's this magic method?
 	create: function() {
 		this.inherited(arguments); // call the parent
-        // this.$['search-list'].pageSize = this.pageSize;
+	// this.$.searchList.pageSize = this.pageSize;
+		
+		this.render();
 		
 		this.showSpinner(false);
-		
-		this.$['search-flexbox'].show();
-		this.$['random-flexbox'].hide();
-		
-		this.setBackButtonState();
+	
+		this.$['searchFlexbox'].show();
+		this.$['randomFlexbox'].hide();
+	
+			
 		this.showRandomButton(true);
 	},
 	
@@ -79,74 +77,63 @@ enyo.kind({
 			this.$.searchterm.setValue(this.searchterm);
 		}
 		this.pages = [];
-		this.$['search-flexbox'].show();
-		this.$['random-flexbox'].hide();
-
-		this.$['search-flexbox'].startSearch(this.searchterm);
+		this.$['searchFlexbox'].show();
+		this.$['randomFlexbox'].hide();
+	
+		this.$['searchFlexbox'].startSearch(this.searchterm);
 	},
 	
 	
 	randomBtnClick: function() {
 		this.pages = [];
-		this.$['search-flexbox'].hide();
-		this.$['random-flexbox'].show();
-		this.$['random-flexbox'].loadData();
+		this.$['searchFlexbox'].hide();
+		this.$['randomFlexbox'].show();
+		this.$['randomFlexbox'].loadData();
 	},
 	
 	
 	showSpinner: function(on) {
-	    if (!!on) {
-            this.$['searchBtn'].hide();
-            this.$['searchSpnr'].show();
-    		this.$['searchSpnr'].spinning = true;
-	    } else {
-	        this.$['searchBtn'].show();
-    		this.$['searchSpnr'].hide();
-    		this.$['searchSpnr'].spinning = false;
-	    }
-		
+		if (!!on) {
+				this.$['searchBtn'].hide();
+				this.$['searchSpnr'].show();
+			this.$['searchSpnr'].spinning = true;
+		} else {
+			this.$['searchBtn'].show();
+			this.$['searchSpnr'].hide();
+			this.$['searchSpnr'].spinning = false;
+		}
+	
 	},
-
+	
 	
 	showDefinition: function(row) {
-		this.$['panel-definition'].showDefinition(row);
-		this.$['sliding-group'].setSelected(this.$['panel-definition']);
-		this.setBackButtonState();
+		this.$.panelDefinition.showDefinition(row);
+		if (window.innerWidth < this.$.slidingPane.multiViewMinWidth) {
+			this.$.slidingPane.selectView(this.$['panel-right']);
+		}
 		this.showRandomButton(false);
 	},
 	
 	backHandler: function(inSender, e) {
-		this.$['sliding-group'].back(e);
-		this.$['commandmenu-slider'].show();
+		this.$['slidingPane'].back(e);
+		this.$['commandmenuSlider'].show();
 	},
 	
 	resizeHandler: function() {
-		this.$['sliding-group'].resize();
-		this.setBackButtonState();
+		this.$['slidingPane'].resize();
 	},
 	
 	
 	showRandomButton: function(on) {
-
-	    if (document.width < this.$['sliding-group'].wideWidth) {
-	        if (!!on) {
-                this.$['commandmenu-slider'].show();
-            } else {
-                this.$['commandmenu-slider'].hide();
-            }
-		} else { // always show if wide
-            this.$['commandmenu-slider'].show();
-		}
-	},
 	
-	setBackButtonState: function() {
-	    if (document.width < this.$['sliding-group'].wideWidth) {
-		    this.$['panel-definition'].$['back-button'].show();
-		} else {
-	        this.$['panel-definition'].$['back-button'].hide();		
+		if (document.width < this.$['slidingPane'].wideWidth) {
+			if (!!on) {
+					this.$['commandmenuSlider'].show();
+				} else {
+					this.$['commandmenuSlider'].hide();
+				}
+		} else { // always show if wide
+				this.$['commandmenuSlider'].show();
 		}
 	}
-	
-	
-	
 });
