@@ -5,8 +5,8 @@
 }
 
 .searchSpinner {
-	margin:0px;
-	padding:0px;
+	margin:0 5px;
+	padding:0;
 	display:inline-block;
 }
 
@@ -14,8 +14,13 @@
 	padding:0;
 }
 
+.wgItem {
+	border-bottom:none;
+}
+
 .item-word {
-	font-weight:bold;
+	font-family: PreludeWGL-Light, "Prelude Light", Prelude, "Prelude Medium", "Segoe UI", Arial, Helvetica, sans-serif;
+	font-size:1.1em;
 }
 
 .item-definition {
@@ -73,8 +78,14 @@ h3 {
 	padding-left: 1em;
 	font-size:1em;
 	color:#666;
+	line-height:1.5em;
 }
 
 .definitionPermalink {
 	background-color:#2D6C94;
+}
+
+.definitionDefinition span.definition {
+	border-bottom:1px dotted #999999;
+	color:#333333;
 }

@@ -1,4 +1,6 @@
 enyo.depends(
+	"vendors/bean.min.js",
+	
 	"app/helpers.js",
 	"app/views/base.js",
 	"app/views/definitionPanel.js",

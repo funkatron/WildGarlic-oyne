@@ -12,7 +12,7 @@ enyo.kind({
 				{kind: "ToolInput", alwaysLooksFocused: true, name:'searchterm', hint: "Search for...", components: [
 				]},
 				{kind: "ToolButton", className:'searchButton', icon: "images/menu-icon-forward.png", name:"searchBtn", onclick: "searchBtnClick"},
-				{kind: "Spinner", className:'searchSpinner', name:"searchSpnr", spinning: false}				
+				{kind: "Spinner", className:'searchSpinner', name:"searchSpinner", spinning: false}				
 			]}
 		]},
 		{kind: "SlidingPane", name:'slidingPane', flex:1, components: [
@@ -26,7 +26,6 @@ enyo.kind({
 				{kind:'wg.randomList', name:'randomFlexbox', flex:1},
 				{kind: "Toolbar", name:'commandmenuSlider', pack: "center", components: [
 					// random button
-					{kind: "GrabButton"},
 					{caption: "Load random entries", onclick: "randomBtnClick"}
 				]}
 			]},
@@ -71,10 +70,6 @@ enyo.kind({
 
 	searchBtnClick: function() {
 		this.searchterm = this.$.searchterm.getValue();
-		if (!this.searchterm) {
-			this.searchterm = "funky";
-			this.$.searchterm.setValue(this.searchterm);
-		}
 		this.pages = [];
 		this.$['searchFlexbox'].show();
 		this.$['randomFlexbox'].hide();
@@ -93,13 +88,13 @@ enyo.kind({
 	
 	showSpinner: function(on) {
 		if (!!on) {
-				this.$['searchBtn'].hide();
-				this.$['searchSpnr'].show();
-			this.$['searchSpnr'].spinning = true;
+			this.$['searchBtn'].hide();
+			this.$['searchSpinner'].show();
+			this.$['searchSpinner'].spinning = true;
 		} else {
 			this.$['searchBtn'].show();
-			this.$['searchSpnr'].hide();
-			this.$['searchSpnr'].spinning = false;
+			this.$['searchSpinner'].hide();
+			this.$['searchSpinner'].spinning = false;
 		}
 	
 	},

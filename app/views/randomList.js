@@ -15,7 +15,7 @@ enyo.kind({
 				/*
 					Item row
 				*/
-				{kind: "Item", onclick: "itemClick", components: [
+				{kind: "Item", className:"wgItem", onclick: "itemClick", components: [
 					{kind:enyo.HFlexBox, flex:1, components: [
 							{name: "item-word", className:'item-word', flex:1},
 							{kind:enyo.HFlexBox, components: [

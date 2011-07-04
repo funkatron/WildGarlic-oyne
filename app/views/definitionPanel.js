@@ -23,7 +23,7 @@ enyo.kind({
 		{kind: "Toolbar", name:'commandmenuSlider', pack: "center", components: [
 			{kind: "GrabButton"},
 			{kind: "Spacer", flex:1},
-			{kind: "ToolButton", icon: "images/menu-icon-forward-email.png", onclick:'permalinkClick'}
+			{kind: "ToolButton", icon: "images/menu-icon-info.png", onclick:'permalinkClick'}
 		]}
 	],
 	
@@ -36,12 +36,19 @@ enyo.kind({
 		// initially we hide these
 		this.$['definitionContainer'].hide();
 		this.$['definitionExample'].hide();
+		
+		bean.add(document, 'span.definition', 'click', enyo.bind(this, this.onDefinitionClick), function (selector) {
+			return document.querySelectorAll(selector);
+		});
 	},
 	
 	showDefinition: function(obj) {
 		this.$.scroller.scroll({x:0, y:0});
 		this.$['definitionWord'].setContent(obj.word);
-		this.$['definitionDefinition'].setContent(nl2br(obj.definition));
+		
+		var htmlDef = obj.definition.replace(/\[([a-zA-Z0-9\s]+)\]/g, "<span class='definition'>$1</span>");
+		
+		this.$['definitionDefinition'].setContent(nl2br(htmlDef));
 		this.$['definitionExample'].setContent(nl2br(obj.example));
 				  this.permalink = obj.permalink;
 	
@@ -53,11 +60,16 @@ enyo.kind({
 	},
 	
 	permalinkClick: function(inSender, e) {
-			  window.open(this.permalink);
+		window.open(this.permalink);
 	},
 	
 	backHandler: function(inSender, e) {
 		this.owner.backHandler(inSender, e);
-	}
+	},
 	
+	onDefinitionClick: function(e) {
+		this.owner.$.searchterm.setValue(e.target.innerText);
+		this.owner.searchBtnClick();		
+	}
+
 });

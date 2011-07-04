@@ -19,7 +19,7 @@ enyo.kind({
 				/*
 					Item row
 				*/
-				{kind: "Item", onclick: "itemClick", components: [
+				{kind: "Item", className:"wgItem", onclick: "itemClick", components: [
 					{kind:enyo.HFlexBox, flex:1, components: [
 							{name: "item-word", className:'item-word', flex:1},
 							{kind:enyo.HFlexBox, components: [
@@ -36,26 +36,28 @@ enyo.kind({
 		}
 	],
 	pageSize: 5,
+	pages: [],
 	// what's this magic method?
 	constructor: function() {
 		this.inherited(arguments); // call the parent version
-		this.pages = [];
-		
 	},
 	
 	startSearch: function(searchterm) {
 		this.searchterm = searchterm;
 		
-		this.$.list.punt(); // what's this?
-		this.$.list.reset(); // what's this?
-		this.$.list.refresh();	
+		if (searchterm) {
+			this.pages = [];
+			this.$.list.punt(); // what's this?
+			this.$.list.reset(); // what's this?
+			this.$.list.refresh();	
+		}
 	},
 	
 	// what's this magic method?
 	acquirePage: function(inSender, inPage) {
-		console.log('acquirePage inPage', inPage);
-		console.log('this.pages', this.pages);
-		console.log('inSender', inSender);
+		enyo.log('acquirePage inPage', inPage);
+		enyo.log('this.pages', this.pages);
+		enyo.log('inSender', inSender);
 		if (this.pages.length == 0) {
 			console.dir(this.pages);
 		}
@@ -78,7 +80,7 @@ enyo.kind({
 		var url = 'http://www.urbandictionary.com/iphone/search/define?term='+
 					encodeURIComponent(this.searchterm)+
 					'&page='+encodeURIComponent(inPage+1);
-		console.log('url', url);
+		enyo.log('url', url);
 		this.$.udSearch.setUrl(url);
 		var r = this.$.udSearch.call(null, {pageIndex: inPage});
 
@@ -89,10 +91,10 @@ enyo.kind({
 	
 	gotSearchResults: function(inSender, inResponse, inRequest) {
 		var pageIndex = inRequest.pageIndex;
-		console.log('pageIndex', pageIndex);
+		enyo.log('pageIndex', pageIndex);
 		
 		if (inResponse.result_type == "no_results") {
-			console.log('no results');
+			enyo.log('no results');
 			return;
 		}
 		
@@ -118,19 +120,19 @@ enyo.kind({
 	
 	
 	fetchRow: function(inIndex) {
-		console.log('fetchRow:', inIndex);
+		enyo.log('fetchRow:', inIndex);
 		var page = Math.floor(inIndex / this.pageSize);
-		console.log('fetchRow page:', page);
+		enyo.log('fetchRow page:', page);
 		var p = this.pages[page];
 		if (!p || !p.data) {
-			console.log('fetchRow:', 'noPage!');
+			enyo.log('fetchRow:', 'noPage!');
 			return null;
 		}
 		var row = inIndex - (page * this.pageSize);
 		if (inIndex < 0) {
 			row -= (this.pageSize - p.data.length);
 		}
-		console.log('fetchRow:', p.data[row]);
+		enyo.log('fetchRow:', p.data[row]);
 		return p.data[row];
 	},
 	
