@@ -47,10 +47,11 @@ enyo.kind({
 		this.$['definitionWord'].setContent(obj.word);
 		
 		var htmlDef = obj.definition.replace(/\[([a-zA-Z0-9\s]+)\]/g, "<span class='definition'>$1</span>");
+		var htmlEx  = obj.example.replace(/\[([a-zA-Z0-9\s]+)\]/g, "<span class='definition'>$1</span>");
 		
 		this.$['definitionDefinition'].setContent(nl2br(htmlDef));
-		this.$['definitionExample'].setContent(nl2br(obj.example));
-				  this.permalink = obj.permalink;
+		this.$['definitionExample'].setContent(nl2br(htmlEx));
+		this.permalink = obj.permalink;
 	
 		// only show them when we have content
 		this.$['definitionContainer'].show();
