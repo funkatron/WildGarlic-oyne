@@ -55,12 +55,12 @@ enyo.kind({
 	
 	// what's this magic method?
 	acquirePage: function(inSender, inPage) {
-		enyo.log('acquirePage inPage', inPage);
-		enyo.log('this.pages', this.pages);
-		enyo.log('inSender', inSender);
-		if (this.pages.length == 0) {
-			console.dir(this.pages);
-		}
+		// enyo.log('acquirePage inPage', inPage);
+		// enyo.log('this.pages', this.pages);
+		// enyo.log('inSender', inSender);
+		// if (this.pages.length == 0) {
+		// 	console.dir(this.pages);
+		// }
 		if (inPage >= 0 && !this.pages[inPage]) {
 			return this.search(inPage);
 		}
@@ -80,7 +80,7 @@ enyo.kind({
 		var url = 'http://www.urbandictionary.com/iphone/search/define?term='+
 					encodeURIComponent(this.searchterm)+
 					'&page='+encodeURIComponent(inPage+1);
-		enyo.log('url', url);
+		// enyo.log('url', url);
 		this.$.udSearch.setUrl(url);
 		var r = this.$.udSearch.call(null, {pageIndex: inPage});
 
@@ -91,10 +91,10 @@ enyo.kind({
 	
 	gotSearchResults: function(inSender, inResponse, inRequest) {
 		var pageIndex = inRequest.pageIndex;
-		enyo.log('pageIndex', pageIndex);
+		// enyo.log('pageIndex', pageIndex);
 		
 		if (inResponse.result_type == "no_results") {
-			enyo.log('no results');
+			// enyo.log('no results');
 			return;
 		}
 		
@@ -120,19 +120,19 @@ enyo.kind({
 	
 	
 	fetchRow: function(inIndex) {
-		enyo.log('fetchRow:', inIndex);
+		// enyo.log('fetchRow:', inIndex);
 		var page = Math.floor(inIndex / this.pageSize);
-		enyo.log('fetchRow page:', page);
+		// enyo.log('fetchRow page:', page);
 		var p = this.pages[page];
 		if (!p || !p.data) {
-			enyo.log('fetchRow:', 'noPage!');
+			// enyo.log('fetchRow:', 'noPage!');
 			return null;
 		}
 		var row = inIndex - (page * this.pageSize);
 		if (inIndex < 0) {
 			row -= (this.pageSize - p.data.length);
 		}
-		enyo.log('fetchRow:', p.data[row]);
+		// enyo.log('fetchRow:', p.data[row]);
 		return p.data[row];
 	},
 	
@@ -151,7 +151,7 @@ enyo.kind({
 	},
 	
 	itemClick: function(inSender, inEvent, inIndex) {
-		console.dir(this.fetchRow(inIndex));
+		// console.dir(this.fetchRow(inIndex));
 		
 		var row = this.fetchRow(inIndex);
 		

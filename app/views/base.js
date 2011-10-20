@@ -2,6 +2,9 @@ enyo.kind({
 	name: "wg.base",
 	kind: enyo.VFlexBox,
 	components: [
+		{kind: enyo.ApplicationEvents, onApplicationRelaunch: "relaunchHandler",
+			onWindowActivated:"windowActivated", onWindowDeactivated:"windowDeactivated",
+			onUnload:"unloaded"},
 		/*
 			page header
 		*/
@@ -19,7 +22,7 @@ enyo.kind({
 			/******************
 				search panel
 			******************/
-			{name:'panel-search', width:'320px', components:[
+			{name:'panel-search', className:'panel-search', width:'320px', components:[
 				// searchlist component
 				{kind:'wg.searchList', name:'searchFlexbox', flex:1},
 				// randomlist component
@@ -37,6 +40,7 @@ enyo.kind({
 				{
 					flex:1,
 					name:"panelDefinition",
+					className:'panel-definition',
 					kind:"WGDefinitionPanel"
 				}
 			]}
@@ -57,7 +61,29 @@ enyo.kind({
 		
 	},
 	
+
+	// called when app is opened or reopened
+    relaunchHandler: function() {   	
+    	this.processLaunchParams(enyo.windowParams);
+    },
+
+	windowActivated: function() {
+		this.windowActive = true;
+	},
+
+	windowDeactivated: function() {
+		this.windowActive = false;
+	},
+
+	// the window is closed
+	unloaded: function() {
+	},
+
+
 	processLaunchParams: function(inParams) {
+
+ 		// enyo.log(JSON.stringify(inParams));
+
 		if (!inParams.action) {
 			return;
 		}
@@ -97,6 +123,8 @@ enyo.kind({
 	
 			
 		this.showRandomButton(true);
+
+		this.processLaunchParams(enyo.windowParams);
 	},
 	
 

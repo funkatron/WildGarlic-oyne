@@ -1,3 +1,13 @@
+body {
+}
+
+.enyo-bg {
+	background-color:white;
+	background-image:url('../images/bg-searchresults.jpg');
+}
+
+
+
 .pageHeaderText {
 	font-size:1.5em;
 	color:#CCC;
@@ -16,7 +26,18 @@
 
 .wgItem {
 	border-bottom:none;
+	border-top:1px dotted #EEEEEE;
 }
+
+.wgItem:active {
+	background-color:rgba(255,255,255,.5);
+}
+
+.wgItem:active .item-word,
+.wgItem:active .item-definition, {
+	color:#000000;
+}
+
 
 .item-word {
 	font-family: PreludeWGL-Light, "Prelude Light", Prelude, "Prelude Medium", "Segoe UI", Arial, Helvetica, sans-serif;
@@ -42,6 +63,9 @@
 	font-size:80%;
 }
 
+#base_panelDefinition_scroller {
+	background:url('../images/bg-definition.jpg');
+}
 
 .definitionContainer {
 	color:#666;

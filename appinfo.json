@@ -1,6 +1,6 @@
 {
 	"id": "com.funkatron.app.wildgarlic",
-	"version": "0.11.0",
+	"version": "1.0.0",
 	"vendor": "Funkatron Productions",
 	"type": "web",
 	"main": "index.html",
