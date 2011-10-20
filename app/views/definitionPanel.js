@@ -23,7 +23,7 @@ enyo.kind({
 		{kind: "Toolbar", name:'commandmenuSlider', pack: "center", components: [
 			{kind: "GrabButton"},
 			{kind: "Spacer", flex:1},
-			{kind: "ToolButton", icon: "images/menu-icon-info.png", onclick:'permalinkClick'}
+			{name: "permalinkButton", kind: "ToolButton", icon: "images/glyphish/212-action2@2x.png", onclick:'permalinkClick'}
 		]}
 	],
 	
@@ -36,6 +36,7 @@ enyo.kind({
 		// initially we hide these
 		this.$['definitionContainer'].hide();
 		this.$['definitionExample'].hide();
+		this.$['permalinkButton'].hide();
 		
 		bean.add(document, 'span.definition', 'click', enyo.bind(this, this.onDefinitionClick), function (selector) {
 			return document.querySelectorAll(selector);
@@ -55,6 +56,7 @@ enyo.kind({
 	
 		// only show them when we have content
 		this.$['definitionContainer'].show();
+		this.$['permalinkButton'].show();
 		if (obj.example) {
 			this.$['definitionExample'].show();
 		}

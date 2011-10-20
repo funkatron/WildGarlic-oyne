@@ -1,5 +1,6 @@
 enyo.depends(
 	"vendors/bean.min.js",
+	"vendors/underscore-min.js",
 	
 	"app/helpers.js",
 	"app/views/base.js",

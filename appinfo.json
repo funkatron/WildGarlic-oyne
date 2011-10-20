@@ -1,10 +1,24 @@
 {
 	"id": "com.funkatron.app.wildgarlic",
-	"version": "0.10.0",
+	"version": "0.11.0",
 	"vendor": "Funkatron Productions",
 	"type": "web",
 	"main": "index.html",
-	"title": "WildGarlic",
-	"icon": "icon.png",
-	"uiRevision":2
+	"title": "WildGarlic for Urban Dictionary",
+	"vendorurl": "http://funkatron.com",
+	"copyright": "© Copyright 2011 Funkatron Productions",
+	"keywords":["urban", "dictionary", "slang"],
+	"icon": "icon_512.png",
+	"splashicon": "icon_128.png",
+	"uiRevision":2,
+
+	"universalSearch": {
+		"search" : {
+			"displayName" : "WildGarlic",
+			"url"         : "com.funkatron.app.wildgarlic",
+			"launchParam" : {"action":"search", "query":"#{searchTerms}"}
+		}
+	}
+
 }
+

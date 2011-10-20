@@ -11,7 +11,7 @@ enyo.kind({
 				{kind:"Spacer", flex:1},
 				{kind: "ToolInput", alwaysLooksFocused: true, name:'searchterm', hint: "Search for...", components: [
 				]},
-				{kind: "ToolButton", className:'searchButton', icon: "images/menu-icon-forward.png", name:"searchBtn", onclick: "searchBtnClick"},
+				{kind: "ToolButton", className:'searchButton', icon: "images/glyphish/06-magnify@2x.png", name:"searchBtn", onclick: "searchBtnClick"},
 				{kind: "Spinner", className:'searchSpinner', name:"searchSpinner", spinning: false}				
 			]}
 		]},
@@ -26,7 +26,7 @@ enyo.kind({
 				{kind:'wg.randomList', name:'randomFlexbox', flex:1},
 				{kind: "Toolbar", name:'commandmenuSlider', pack: "center", components: [
 					// random button
-					{caption: "Load random entries", onclick: "randomBtnClick"}
+					{onclick: "randomBtnClick", icon: "images/glyphish/169-8ball@2x.png"}
 				]}
 			]},
 
@@ -44,6 +44,12 @@ enyo.kind({
 		
 	],
 	
+	// set this to true when we render
+	isRendered: false,
+
+	// functions we will execute once everything is rendered
+	onRendered: [],
+
 	// what's this magic method?
 	constructor: function() {
 		this.inherited(arguments); // call the parent version
@@ -51,6 +57,32 @@ enyo.kind({
 		
 	},
 	
+	processLaunchParams: function(inParams) {
+		if (!inParams.action) {
+			return;
+		}
+
+		switch(inParams.action) {
+			case 'search':
+				if (inParams.query) {
+					var searchfunc = _.bind(function() { // bind to this with underscore
+						this.$.searchterm.setValue(inParams.query);
+						this.searchBtnClick();
+					}, this);
+
+					if (this.isRendered === false) {
+						this.onRendered.push(searchfunc);
+					} else {
+						searchfunc();
+					}
+				}
+				break;
+			default:
+				return;
+		}
+	},
+
+
 	// what's this magic method?
 	create: function() {
 		this.inherited(arguments); // call the parent
@@ -119,7 +151,6 @@ enyo.kind({
 	
 	
 	showRandomButton: function(on) {
-	
 		if (document.width < this.$['slidingPane'].wideWidth) {
 			if (!!on) {
 					this.$['commandmenuSlider'].show();
@@ -129,5 +160,16 @@ enyo.kind({
 		} else { // always show if wide
 				this.$['commandmenuSlider'].show();
 		}
+	},
+
+	rendered: function() {
+		this.inherited(arguments);
+		if (this.onRendered.length > 0) {
+			for (var i=0; i < this.onRendered.length; i++) {
+				this.onRendered[i].call();
+			}
+			this.onRendered = []; // clear each
+		}
+		this.isRendered = true; // so we don't try to bind stuff to onRendered again
 	}
 });
